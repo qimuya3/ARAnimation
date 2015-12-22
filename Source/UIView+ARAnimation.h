@@ -9,7 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "AREasingCurveFunction.h"
 
+/**
+ *  手动初始化 ARAnimation 动画库
+ *  注意：在app启动时，必须手动调用 + (void)ARAnimationInit; 方法，进行ARAnimation 初始化，
+ 才能正常使用 ARAnimation
+ */
 @interface UIView (ARAnimation)
+
+/**
+ *  手动初始化 ARAnimation 动画库
+ *  注意：在app启动时，必须手动调用该方法，进行ARAnimation 初始化，
+            才能正常使用 ARAnimation
+ */
++ (void)ARAnimationInit;
 
 // basic
 + (void)AR_animationWithDuration:(NSTimeInterval)duration
