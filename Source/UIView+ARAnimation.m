@@ -65,6 +65,18 @@ NSString *const kARBlockAnimationContextKey = @"kARBlockAnimationContextKey";
   });
 }
 
+/**
+ *  手动初始化 ARAnimation 动画库
+ *  注意：在app启动时，必须手动调用该方法，进行ARAnimation 初始化，
+ 才能正常使用 ARAnimation
+ */
++ (void)ARAnimationInit {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self swizzleMethods];
+    });
+}
+
 + (void)swizzleMethods {
   SEL originalSelector = @selector(actionForLayer:forKey:);
   SEL extendedSelector = @selector(AR_actionForLayer:forKey:);
